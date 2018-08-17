@@ -6,9 +6,9 @@ from tg_bot import dispatcher
 
 def gugle(bot: Bot, update: Update):
         query = update.effective_message.text.split(None, 1)
-        result_ = subprocess.run(['gsearch', query], stdout=subprocess.PIPE)
+        result_ = subprocess.run(['gsearch', str(query)], stdout=subprocess.PIPE)
         result = str(result_.stdout.decode())
-        update.effective_message.reply_markdown('*Searching:*\n`' + query + '`\n\n*RESULTS:*\n' + result)
+        update.effective_message.reply_markdown('*Searching:*\n`' + str(query) + '`\n\n*RESULTS:*\n' + result)
 
 
 go = CommandHandler("google", gugle)
